@@ -34,10 +34,10 @@ const getPost = asyncHandler(async (req,res)=>{
 });
 
 const updatePost = asyncHandler(async (req,res)=>{
-    const post = await Post.finsdById(req.params.id);
+    const post = await Post.findById(req.params.id);
     if(!post){
         res.status(404);
-        throw new Error('Post not foumd')
+        throw new Error('Post not found')
     }
     if(!req.user){
         res.status(401);
