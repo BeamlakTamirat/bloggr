@@ -3,12 +3,12 @@ import Header from './components/Header.jsx';
 
 const App = ()=>{
   return (
-    <>
+    <div className='bg-[#121212] text-white min-h-screen'>
       <Header />
-      <main style={{padding:'1rem'}}>
+      <main className="container mx-auto p-4">
         <Outlet />
       </main>
-    </>
+    </div>
   );
 };
 
