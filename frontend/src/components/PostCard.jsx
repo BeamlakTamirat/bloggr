@@ -37,7 +37,7 @@ const PostCard = ({ post, index }) => {
         <div className="flex justify-between items-center text-gray-500 text-sm mb-4">
           <span className="flex items-center gap-2">
             <FaRegUserCircle />
-            By Author
+            By {post.user ? post.user.username : 'Anonymous'}
           </span>
           <span className="flex items-center gap-2">
             <FaRegCalendarAlt />
