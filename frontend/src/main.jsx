@@ -9,6 +9,7 @@ import {
 
 import './index.css';
 import App from './App.jsx';
+import PostPage from './pages/PostPage.jsx';
 
 
 import { AuthProvider } from './context/AuthContext';
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route index={true} element={<HomePage />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
+      <Route path="post/:postId" element={<PostPage />} />
     </Route>
   )
 );
