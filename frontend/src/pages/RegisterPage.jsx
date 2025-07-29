@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
@@ -9,6 +10,16 @@ const RegisterPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const navigate = useNavigate();
+  const { userInfo, login } = useAuth();
+
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [userInfo, navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -16,8 +27,10 @@ const RegisterPage = () => {
     try {
       const userData = { username, email, password };
       const response = await axios.post('/api/users/register', userData);
-      console.log('Registration successful:', response.data);
+      login(response.data);
+
       setLoading(false);
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred');
       setLoading(false);
@@ -60,4 +73,5 @@ const RegisterPage = () => {
     </div>
   );
 };
+
 export default RegisterPage;
