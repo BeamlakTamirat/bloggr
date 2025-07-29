@@ -10,6 +10,8 @@ import {
 import './index.css';
 import App from './App.jsx';
 import PostPage from './pages/PostPage.jsx';
+import CreatePostPage from './pages/CreatePostPage.jsx'; 
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 
 import { AuthProvider } from './context/AuthContext';
@@ -24,6 +26,9 @@ const router = createBrowserRouter(
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
       <Route path="post/:postId" element={<PostPage />} />
+      <Route path="" element={<ProtectedRoute />}>
+        <Route path="create-post" element={<CreatePostPage />} />
+      </Route>
     </Route>
   )
 );

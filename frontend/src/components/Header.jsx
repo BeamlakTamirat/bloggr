@@ -20,6 +20,9 @@ const Header = () => {
         <nav className="flex gap-6 items-center">
           {userInfo ? (
             <>
+              <Link to="/create-post" className="text-gray-300 hover:text-white transition-colors">
+                Write
+              </Link>
               <span className="text-white flex items-center gap-2">
                 <FaUserCircle /> {userInfo.username}
               </span>
