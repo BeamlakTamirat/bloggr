@@ -1,4 +1,2 @@
-const HomePage = () => {
-  return <div class='text-red-500 text-2xl'>This is the Home Page</div>;
-};
+const HomePage = () => <div>HomePage Content</div>;
 export default HomePage;
