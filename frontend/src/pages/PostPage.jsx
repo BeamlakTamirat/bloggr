@@ -70,9 +70,10 @@ const PostPage = () => {
             {new Date(post.createdAt).toLocaleDateString()}
           </span>
         </div>
-        <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed">
-          {post.content}
-        </div>
+        <div
+          className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </article>
 
       <section className="mt-16 border-t border-gray-800 pt-8">

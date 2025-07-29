@@ -3,10 +3,14 @@ import { motion } from 'framer-motion';
 import { FaRegUserCircle, FaRegCalendarAlt } from 'react-icons/fa';
 
 const PostCard = ({ post, index }) => {
-  const getSnippet = (content) => {
-    if (!content) return '';
-    const words = content.split(' ');
-    return words.length > 20 ? words.slice(0, 20).join(' ') + '...' : content;
+  const createSnippet = (htmlContent) => {
+    if (!htmlContent) return '';
+    const div = document.createElement('div');
+    div.innerHTML = htmlContent;
+    const text = div.textContent || div.innerText || '';
+    
+    const words = text.split(' ');
+    return words.length > 20 ? words.slice(0, 20).join(' ') + '...' : text;
   };
 
   const cardVariants = {
@@ -32,7 +36,11 @@ const PostCard = ({ post, index }) => {
       style={{ transformStyle: 'preserve-3d' }}
     >
       <h2 className="text-2xl font-bold text-white mb-3">{post.title}</h2>
-      <p className="text-gray-400 mb-5 flex-grow">{getSnippet(post.content)}</p>
+      
+      <p className="text-gray-400 mb-5 flex-grow">
+        {createSnippet(post.content)}
+      </p>
+
       <div className="border-t border-gray-800 pt-4 mt-auto">
         <div className="flex justify-between items-center text-gray-500 text-sm mb-4">
           <span className="flex items-center gap-2">
