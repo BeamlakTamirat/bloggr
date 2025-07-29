@@ -12,8 +12,6 @@ const RegisterPage = () => {
 
   const navigate = useNavigate();
   const { userInfo, login } = useAuth();
-
-
   useEffect(() => {
     if (userInfo) {
       navigate('/');
@@ -27,6 +25,7 @@ const RegisterPage = () => {
     try {
       const userData = { username, email, password };
       const response = await axios.post('/api/users/register', userData);
+
       login(response.data);
 
       setLoading(false);
