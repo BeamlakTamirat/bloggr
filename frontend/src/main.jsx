@@ -13,6 +13,8 @@ import PostPage from './pages/PostPage.jsx';
 import CreatePostPage from './pages/CreatePostPage.jsx'; 
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
+import DashboardPage from './pages/DashboardPage.jsx';
+import EditPostPage from './pages/EditPostPage.jsx';
 
 import { AuthProvider } from './context/AuthContext';
 import HomePage from './pages/HomePage.jsx';
@@ -28,6 +30,8 @@ const router = createBrowserRouter(
       <Route path="post/:postId" element={<PostPage />} />
       <Route path="" element={<ProtectedRoute />}>
         <Route path="create-post" element={<CreatePostPage />} />
+        <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="post/:postId/edit" element={<EditPostPage />} />
       </Route>
     </Route>
   )
