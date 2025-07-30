@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import PostCard from '../components/PostCard';
 import SkeletonCard from '../components/SkeletonCard';
 
@@ -12,7 +12,7 @@ const HomePage = () => {
     const fetchPosts = async () => {
       try {
         setError(null);
-        const response = await axios.get('/api/posts');
+        const response = await api.get('/api/posts');
         setPosts(response.data);
       } catch (err) {
         setError('Failed to load posts. Please try again later.');

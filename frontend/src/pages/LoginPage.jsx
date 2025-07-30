@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
@@ -24,7 +24,7 @@ const LoginPage = () => {
     setError(null);
     try {
       const userData = { email, password };
-      const response = await axios.post('/api/users/login', userData);
+      const response = await api.post('/api/users/login', userData);
       login(response.data);
       setLoading(false);
       navigate('/');
