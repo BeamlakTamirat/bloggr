@@ -84,10 +84,16 @@ const deletePost = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id, message: 'Post removed' });
 });
 
+const getMyPosts = asyncHandler(async (req, res) => {
+  const posts = await Post.find({ user: req.user.id });
+  res.status(200).json(posts);
+});
+
 module.exports = {
   getPosts,
   createPost,
   getPost,
+  getMyPosts,
   updatePost,
   deletePost,
 };
