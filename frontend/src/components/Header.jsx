@@ -23,6 +23,9 @@ const Header = () => {
               <Link to="/create-post" className="text-gray-300 hover:text-white transition-colors">
                 Write
               </Link>
+              <Link to="/dashboard" className="text-gray-300 hover:text-white transition-colors">
+                Dashboard
+              </Link>
               <span className="text-white flex items-center gap-2">
                 <FaUserCircle /> {userInfo.username}
               </span>
