@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const Post = require('../models/postModel.js');
 const User = require('../models/userModel.js');
+const Comment = require('../models/commentModel.js');
 
 const getPosts = asyncHandler(async (req, res) => {
   const posts = await Post.find({}).populate('user', 'username');
@@ -26,14 +27,17 @@ const createPost = asyncHandler(async (req, res) => {
 
 
 const getPost = asyncHandler(async (req, res) => {
-  const post = await Post.findById(req.params.id).populate('user', 'username');
+  const [post, comments] = await Promise.all([
+    Post.findById(req.params.id).populate('user', 'username'),
+    Comment.find({ post: req.params.id }).populate('user', 'username')
+  ]);
 
   if (!post) {
     res.status(404);
     throw new Error('Post not found');
   }
 
-  res.status(200).json(post);
+  res.status(200).json({ ...post.toObject(), comments });
 });
 
 const updatePost = asyncHandler(async (req, res) => {

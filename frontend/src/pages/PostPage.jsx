@@ -18,11 +18,10 @@ const PostPage = () => {
     const fetchPostAndComments = async () => {
       try {
         setLoading(true);
-        const postRes = await api.get(`/api/posts/${postId}`);
-        const commentsRes = await api.get(`/api/posts/${postId}/comments`);
+        const { data } = await api.get(`/api/posts/${postId}`);
         
-        setPost(postRes.data);
-        setComments(commentsRes.data);
+        setPost(data);
+        setComments(data.comments || []);
         setLoading(false);
       } catch (err) {
         setError('Could not fetch the post and comments.');
