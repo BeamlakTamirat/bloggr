@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { FaUserCircle, FaRegUserCircle, FaRegCalendarAlt } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import CommentForm from '../components/CommentForm';
@@ -18,8 +18,8 @@ const PostPage = () => {
     const fetchPostAndComments = async () => {
       try {
         setLoading(true);
-        const postRes = await axios.get(`/api/posts/${postId}`);
-        const commentsRes = await axios.get(`/api/posts/${postId}/comments`);
+        const postRes = await api.get(`/api/posts/${postId}`);
+        const commentsRes = await api.get(`/api/posts/${postId}/comments`);
         
         setPost(postRes.data);
         setComments(commentsRes.data);
