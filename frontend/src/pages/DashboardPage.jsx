@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
@@ -19,7 +19,7 @@ const DashboardPage = () => {
         const config = {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         };
-        const { data } = await axios.get('/api/posts/myposts', config);
+        const { data } = await api.get('/api/posts/myposts', config);
         setPosts(data);
       } catch (error) {
         console.error('Failed to fetch posts');
@@ -44,7 +44,7 @@ const DashboardPage = () => {
       const config = {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       };
-      await axios.delete(`/api/posts/${postToDelete}`, config);
+      await api.delete(`/api/posts/${postToDelete}`, config);
       setPosts(posts.filter((p) => p._id !== postToDelete));
     } catch (error) {
       console.error('Failed to delete post');
