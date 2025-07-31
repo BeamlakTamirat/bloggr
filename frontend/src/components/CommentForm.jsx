@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 
 const CommentForm = ({ postId, onCommentPosted }) => {
@@ -21,7 +21,7 @@ const CommentForm = ({ postId, onCommentPosted }) => {
         },
       };
 
-      const { data: newComment } = await axios.post(
+      const { data: newComment } = await api.post(
         `/api/posts/${postId}/comments`,
         { content },
         config
