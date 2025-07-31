@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -28,7 +28,7 @@ const CreatePostPage = () => {
       };
 
       const postData = { title, content };
-      const { data: newPost } = await axios.post('/api/posts', postData, config);
+      const { data: newPost } = await api.post('/api/posts', postData, config);
       
       setLoading(false);
       navigate(`/post/${newPost._id}`);
