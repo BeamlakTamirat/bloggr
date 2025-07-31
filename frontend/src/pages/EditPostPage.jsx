@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -18,7 +18,7 @@ const EditPostPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const { data } = await axios.get(`/api/posts/${postId}`);
+        const { data } = await api.get(`/api/posts/${postId}`);
         if (data.user && data.user._id !== userInfo._id) {
           navigate('/');
           return;
@@ -49,7 +49,7 @@ const EditPostPage = () => {
         },
       };
       const postData = { title, content };
-      await axios.put(`/api/posts/${postId}`, postData, config);
+      await api.put(`/api/posts/${postId}`, postData, config);
       setLoading(false);
       navigate(`/post/${postId}`);
     } catch (err) {
