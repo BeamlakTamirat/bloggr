@@ -1,6 +1,6 @@
 
 
-<h1 align="center">Bloggr : FullStack Blogging Platform</h1>
+<h1 align="center">Bloggr : Blogging Platform</h1>
 
 <p align="center">
   <strong>Engineered for a seamless writing and reading experience, featuring a stunning, futuristic UI and robust, full-stack functionality.</strong>
