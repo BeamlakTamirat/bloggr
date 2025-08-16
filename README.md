@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://bloggr-beamlak.vercel.app/"><strong>🚀 Explore the Live Demo</strong></a>
+  <a href="bloggr-xi.vercel.app"><strong>🚀 Explore the Live Demo</strong></a>
 </p>
 
 ---
