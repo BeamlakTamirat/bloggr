@@ -6,10 +6,6 @@
   <strong>Engineered for a seamless writing and reading experience, featuring a stunning, futuristic UI and robust, full-stack functionality.</strong>
 </p>
 
-<p align="center">
-  <a href="bloggr-xi.vercel.app"><strong>🚀 Explore the Live Demo</strong></a>
-</p>
-
 ---
 
 ## ✨ Core Features
